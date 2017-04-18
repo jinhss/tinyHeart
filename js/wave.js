@@ -26,7 +26,10 @@ WaveObj.prototype.draw = function() {
             this.r[i] += deltaTime * 0.04;
 
             // 结束这个涟漪
-            if (this.r[i] > 50) this.flag[i] = false;
+            if (this.r[i] > 50) {
+                this.flag[i] = false;
+                break;
+            }
 
             // 涟漪透明度
             var alpha = 1 - this.r[i] / 50;
