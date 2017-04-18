@@ -106,4 +106,5 @@ function onMousemove(e) {
 
 function restartGame () {
     if(data.gameOver) data.gameOver=false;
+    baby.babyBodyCount=0;
 };
