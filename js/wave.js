@@ -37,7 +37,6 @@ WaveObj.prototype.draw = function() {
             ctx1.strokeStyle = "rgba(255,255,255," + alpha + ")";
             ctx1.closePath();
             ctx1.stroke();
-            console.log(this.r[i]);
         }
     }
     ctx1.restore();
