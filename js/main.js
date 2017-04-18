@@ -22,6 +22,7 @@ function init() {
     ctx2 = can2.getContext('2d');
 
     can1.addEventListener('mousemove', onMousemove, false);
+    can1.addEventListener('click', restartGame, false);
 
     ctx1.fillStyle = '#fff';
     ctx1.font = "20px Verdana"
@@ -102,3 +103,7 @@ function onMousemove(e) {
     mY = e.offSetY || e.layerY;
 
 }
+
+function restartGame () {
+    if(data.gameOver) data.gameOver=false;
+};
