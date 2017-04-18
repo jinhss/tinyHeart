@@ -104,7 +104,9 @@ function onMousemove(e) {
 
 }
 
-function restartGame () {
-    if(data.gameOver) data.gameOver=false;
-    baby.babyBodyCount=0;
+function restartGame() {
+    if (data.gameOver) data.gameOver = false;
+    baby.babyBodyCount = 0;
+    data.fruitNum = 0;
+    data.score = 0;
 };
