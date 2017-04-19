@@ -13,8 +13,8 @@ function checkOrient() {
     else if (window.orientation == 90 || window.orientation == -90) {
         screenOrientation = 'landscape';// 横屏
     }
-    return screenOrientation;
 }
+
 // 添加事件监听
 addEventListener('load', function () {
     checkOrient();
