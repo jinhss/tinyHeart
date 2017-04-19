@@ -168,11 +168,10 @@ function restartGame() {
 function onTouchend(e) {
     if (!data.gameOver) return;
     var e = e || event;
+    e.preventDefault();
     data.gameOver = false;
     baby.babyBodyCount = 0;
     mom.momBodyCount = 0;
     data.fruitNum = 0;
     data.score = 0;
-
-    e.preventDefault();
 }
