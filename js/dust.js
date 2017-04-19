@@ -21,7 +21,6 @@ DustObj.prototype.init = function () {
         this.dustPics[i] = new Image();
         this.dustPics[i].src = "./images/dust" + i + ".png";
     }
-    loadDate += 1;
 };
 
 DustObj.prototype.draw = function () {

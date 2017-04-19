@@ -1,10 +1,7 @@
 var can1, can2, ctx1, ctx2, lastTime, deltaTime, bgImg = new Image(),
-    cW, cH, ane, fruit, mom, mX, mY, baby, data, wave, halo, dust, loadDate = 0;
-
-document.body.onload = function () {
+    cW, cH, ane, fruit, mom, mX, mY, baby, data, wave, halo, dust;
 
 
-};
 document.onreadystatechange = loadingChange;//当页面加载状态改变的时候执行这个方法.
 function loadingChange()
 {

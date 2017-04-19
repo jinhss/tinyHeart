@@ -38,7 +38,6 @@ MomObj.prototype.init = function() {
         this.momBodyOrange[i].src = "./images/bigSwim" + i + ".png";
         this.momBodyBlue[i].src = "./images/bigSwimBlue" + i + ".png";
     }
-    loadDate += 1;
 };
 
 MomObj.prototype.draw = function() {

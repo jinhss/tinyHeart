@@ -15,7 +15,6 @@ WaveObj.prototype.init = function () {
         this.flag[i] = false;
         this.r[i] = 0;
     }
-    loadDate += 1;
 };
 
 WaveObj.prototype.draw = function () {

@@ -36,7 +36,6 @@ BabyObj.prototype.init = function() {
         this.babyBody[i] = new Image();
         this.babyBody[i].src = "./images/babyFade" + i + ".png";
     }
-    loadDate += 1;
 };
 
 BabyObj.prototype.draw = function() {
