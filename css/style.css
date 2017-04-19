@@ -7,14 +7,11 @@ body {
 }
 
 .d_bg {
-    width: 800px;
-    height: 600px;
     margin: 0 auto;
 }
 
 .c_box {
     position: relative;
-    height: 100%;
 }
 
 canvas {

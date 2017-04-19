@@ -7,7 +7,7 @@ var DustObj = function () {
     this.alpha = [];
 };
 
-DustObj.prototype.num = 30;
+DustObj.prototype.num = Math.floor(clientW / 27);
 
 DustObj.prototype.init = function () {
     for (var i = 0; i < this.num; i++) {

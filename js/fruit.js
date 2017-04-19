@@ -23,7 +23,7 @@ var FruitObj = function () {
     this.aneNum = [];
 };
 
-FruitObj.prototype.num = 15;
+FruitObj.prototype.num = Math.floor(clientW / 53);
 
 FruitObj.prototype.init = function () {
     for (var i = 0; i < this.num; i++) {
@@ -106,7 +106,8 @@ function fruitMonitor() {
     for (var i = 0; i < fruit.num; i++) {
         if (fruit.alive[i]) num++;
     }
-    if (num < 15) {
+    if (num < fruit.num) {
+        // console.log(fruit.num);
         sendFruit();
         return;
     }

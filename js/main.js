@@ -1,6 +1,8 @@
 var can1, can2, ctx1, ctx2, lastTime, deltaTime, bgImg = new Image(),
-    cW, cH, ane, fruit, mom, mX, mY, baby, data, wave, halo, dust;
+    cW, cH, ane, fruit, mom, mX, mY, baby, data, wave, halo, dust, clientH, clientW;
 
+clientH = document.documentElement.clientHeight || document.body.clientHeight;
+clientW = document.documentElement.clientWidth || document.body.clientWidth
 
 document.onreadystatechange = loadingChange;//当页面加载状态改变的时候执行这个方法.
 function loadingChange() {
@@ -31,10 +33,15 @@ function init() {
 
     can2 = document.getElementById('canvas2'); // background,ane,fruits
     ctx2 = can2.getContext('2d');
+
+    can1.height = can2.height = clientH;
+    can1.width = can2.width = clientW;
+
     can1.addEventListener('mousemove', onMousemove, false);
     can1.addEventListener('touchmove', onTouchmove, false);
     can1.addEventListener('click', restartGame, false);
     can1.addEventListener('touchend', onTouchend, false);
+
     ctx1.fillStyle = '#fff';
     ctx1.font = "20px Verdana"
 

@@ -6,7 +6,7 @@ var AneObj = function () {
     this.amp = [];//振幅
 };
 
-AneObj.prototype.num = 50;
+AneObj.prototype.num = Math.floor(clientW / 16);
 
 AneObj.prototype.init = function () {
     for (var i = 0; i < this.num; i++) {
