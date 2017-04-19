@@ -1,8 +1,17 @@
 var can1, can2, ctx1, ctx2, lastTime, deltaTime, bgImg = new Image(),
     cW, cH, ane, fruit, mom, mX, mY, baby, data, wave, halo, dust, loadDate = 0;
 
-document.body.onload = game;
+document.body.onload = function () {
 
+
+};
+document.onreadystatechange = loadingChange;//当页面加载状态改变的时候执行这个方法.
+function loadingChange()
+{
+    if(document.readyState == "complete"){ //当页面加载状态为完全结束时进入
+        game();
+    }
+}
 function game() {
     init();
 
@@ -10,7 +19,6 @@ function game() {
 
 
     deltaTime = 0;
-    if (loadDate < 7) return;
 
     gameLoop();
 }
