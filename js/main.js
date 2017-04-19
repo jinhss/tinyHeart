@@ -2,15 +2,13 @@ var can1, can2, ctx1, ctx2, lastTime, deltaTime, bgImg = new Image(),
     cW, cH, ane, fruit, mom, mX, mY, baby, data, wave, halo, dust;
 
 
-// document.onreadystatechange = loadingChange;//当页面加载状态改变的时候执行这个方法.
-// function loadingChange()
-// {
-//     if(document.readyState == "complete"){ //当页面加载状态为完全结束时进入
-//         game();
-//     }
-// }
+document.onreadystatechange = loadingChange;//当页面加载状态改变的时候执行这个方法.
+function loadingChange() {
+    if (document.readyState == "complete") { //当页面加载状态为完全结束时进入
+        game();
+    }
+}
 
-window.onload = game;
 
 function game() {
     init();
@@ -24,21 +22,22 @@ function game() {
 }
 
 function init() {
+    bgImg.src = './images/background.jpg';
+
     // 找到画布并获得画笔
+
     can1 = document.getElementById('canvas1'); // fishes,dust,UI,circle
     ctx1 = can1.getContext('2d');
 
     can2 = document.getElementById('canvas2'); // background,ane,fruits
     ctx2 = can2.getContext('2d');
-
     can1.addEventListener('mousemove', onMousemove, false);
-    can1.addEventListener('click', restartGame, false);
 
+    can1.addEventListener('click', restartGame, false);
     ctx1.fillStyle = '#fff';
     ctx1.font = "20px Verdana"
-    ctx1.textAlign = "center";
 
-    bgImg.src = './images/background.jpg';
+    ctx1.textAlign = "center";
 
     cW = can1.width;
     cH = can1.height;
