@@ -1,5 +1,5 @@
 var can1, can2, ctx1, ctx2, lastTime, deltaTime, bgImg = new Image(),
-    cW, cH, ane, fruit, mom, mX, mY, baby, data, wave;
+    cW, cH, ane, fruit, mom, mX, mY, baby, data, wave, halo, dust;
 
 document.body.onload = game;
 
@@ -53,6 +53,12 @@ function init() {
     wave = new WaveObj();
     wave.init();
 
+    halo = new HaloObj();
+    halo.init();
+
+    dust = new DustObj();
+    dust.init();
+
 }
 
 function gameLoop() {
@@ -93,6 +99,10 @@ function gameLoop() {
     data.draw();
 
     wave.draw();
+
+    halo.draw();
+
+    dust.draw();
 }
 
 function onMousemove(e) {
@@ -105,7 +115,8 @@ function onMousemove(e) {
 }
 
 function restartGame() {
-    if (data.gameOver) data.gameOver = false;
+    if (!data.gameOver) return;
+    data.gameOver = false;
     baby.babyBodyCount = 0;
     data.fruitNum = 0;
     data.score = 0;

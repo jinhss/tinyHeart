@@ -1,6 +1,5 @@
 var MomObj = function() {
     this.disX, this.disY, this.angle;
-    this.bigBody = new Image();
 
     this.momEyes = [];
     this.momEyesCount = 0;
@@ -10,7 +9,6 @@ var MomObj = function() {
     this.momBodyOrange = [];
     this.momBodyBlue = [];
     this.momBodyCount = 0;
-    this.momBodyTimer = 0;
 
     this.momTails = [];
     this.momTailsCount = 0;
@@ -40,15 +38,13 @@ MomObj.prototype.init = function() {
         this.momBodyOrange[i].src = "./images/bigSwim" + i + ".png";
         this.momBodyBlue[i].src = "./images/bigSwimBlue" + i + ".png";
     }
-
-    this.bigBody.src = "./images/bigSwim0.png";
 };
 
 MomObj.prototype.draw = function() {
 
     // 鱼妈妈趋向鼠标位置 (运动速度)
-    this.disX = lerpDistance(mX - 10, this.disX, 0.98);
-    this.disY = lerpDistance(mY - 10, this.disY, 0.98);
+    this.disX = lerpDistance(mX - 10, this.disX, 0.96);
+    this.disY = lerpDistance(mY - 10, this.disY, 0.96);
 
     // 坐标差
     var deltaY = mY - this.disY;
@@ -66,8 +62,6 @@ MomObj.prototype.draw = function() {
         this.momTailsTimer %= 50;
     }
 
-
-    this.momBodyTimer += deltaTime;
     // 鱼妈妈眼睛
     this.momEyesTimer += deltaTime;
     if (this.momEyesTimer > this.momEyesInterval) {

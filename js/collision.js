@@ -24,8 +24,9 @@ function momBabyCollision() {
     var l = calLength2(mom.disX, mom.disY, baby.disX, baby.disY);
     if (l < 900 && data.fruitNum > 0) {
         baby.babyBodyCount = 0;
+        mom.momBodyCount = 0;
         data.addScore();
         data.reset();
-        mom.momBodyCount = 0;
+        halo.born(baby.disX,baby.disY);
     }
 }

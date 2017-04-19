@@ -1,4 +1,4 @@
-var FruitObj = function() {
+var FruitObj = function () {
     // 果实状态 true | false
     this.alive = [];
 
@@ -19,11 +19,13 @@ var FruitObj = function() {
     this.orange = new Image();
 
     this.blue = new Image();
+
+    this.aneNum = [];
 };
 
 FruitObj.prototype.num = 15;
 
-FruitObj.prototype.init = function() {
+FruitObj.prototype.init = function () {
     for (var i = 0; i < this.num; i++) {
         this.alive[i] = false;
         this.disX[i] = 0;
@@ -31,8 +33,11 @@ FruitObj.prototype.init = function() {
 
         this.fruitType[i] = "";
 
+        // 设置果实出生位置
+        this.aneNum[i] = 0;
+
         // 初始化果实,全部出生
-        this.born(i);
+        //this.born(i);
 
         // 果实成长速度,上浮速度 0.01~0.015
         this.spd[i] = Math.random() * 0.01 + 0.005;
@@ -42,7 +47,7 @@ FruitObj.prototype.init = function() {
     this.blue.src = './images/blue.png';
 };
 
-FruitObj.prototype.draw = function() {
+FruitObj.prototype.draw = function () {
     for (var i = 0; i < this.num; i++) {
         // 判断果实状态
         if (this.alive[i]) {
@@ -52,13 +57,16 @@ FruitObj.prototype.draw = function() {
 
             // 限制果实大小
             if (this.size[i] <= 14) {
+                var num = this.aneNum[i];
+                this.disX[i] = ane.headX[num];
+                this.disY[i] = ane.headY[num];
                 this.size[i] += this.spd[i] * deltaTime;
             } else {
                 this.disY[i] -= this.spd[i] * 7 * deltaTime;
             }
-
             // 绘制果实
             ctx2.drawImage(pic, this.disX[i] - this.size[i] * 0.5, this.disY[i] - this.size[i] * 0.5, this.size[i], this.size[i]);
+
 
             if (this.disY[i] < 10) {
                 this.alive[i] = false;
@@ -68,11 +76,9 @@ FruitObj.prototype.draw = function() {
     }
 };
 
-FruitObj.prototype.born = function(i) {
+FruitObj.prototype.born = function (i) {
     // 找到海葵
-    var aneID = Math.floor(Math.random() * ane.num);
-    this.disX[i] = ane.x[aneID];
-    this.disY[i] = cH - ane.len[aneID];
+    this.aneNum[i] = Math.floor(Math.random() * ane.num);
 
     // 随机生成果实类型
     this.fruitType[i] = Math.random() < 0.2 ? 'blue' : 'orange';
@@ -83,11 +89,11 @@ FruitObj.prototype.born = function(i) {
 };
 
 // 被吃掉的果实
-FruitObj.prototype.dead = function(i) {
+FruitObj.prototype.dead = function (i) {
     this.alive[i] = false;
 };
 
-FruitObj.prototype.updata = function() {
+FruitObj.prototype.updata = function () {
     var num = 0;
     for (var i = 0; i < this.num; i++) {
         if (this.alive[i]) num++;
