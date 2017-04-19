@@ -45,6 +45,7 @@ FruitObj.prototype.init = function () {
 
     this.orange.src = './images/orange.png';
     this.blue.src = './images/blue.png';
+    loadDate += 1;
 };
 
 FruitObj.prototype.draw = function () {

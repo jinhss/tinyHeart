@@ -1,4 +1,4 @@
-var WaveObj = function() {
+var WaveObj = function () {
     this.aDisX = [];
     this.aDisY = [];
     this.flag = [];
@@ -7,7 +7,7 @@ var WaveObj = function() {
 
 WaveObj.prototype.num = 10;
 
-WaveObj.prototype.init = function() {
+WaveObj.prototype.init = function () {
     for (var i = 0; i < this.num; i++) {
         this.aDisX[i] = 0;
         this.aDisY[i] = 0;
@@ -15,13 +15,14 @@ WaveObj.prototype.init = function() {
         this.flag[i] = false;
         this.r[i] = 0;
     }
+    loadDate += 1;
 };
 
-WaveObj.prototype.draw = function() {
+WaveObj.prototype.draw = function () {
     ctx1.save();
-    ctx1.lineWidth=2;
-    ctx1.shadowBlur=2;
-    ctx1.shadowColor="#fff";
+    ctx1.lineWidth = 2;
+    ctx1.shadowBlur = 2;
+    ctx1.shadowColor = "#fff";
     for (var i = 0; i < this.num; i++) {
         if (this.flag[i]) {
             // 涟漪半径
@@ -47,7 +48,7 @@ WaveObj.prototype.draw = function() {
     ctx1.restore();
 };
 
-WaveObj.prototype.born = function(x, y) {
+WaveObj.prototype.born = function (x, y) {
     for (var i = 0; i < this.num; i++) {
         if (!this.flag[i]) {
             this.flag[i] = true;

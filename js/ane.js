@@ -21,6 +21,7 @@ AneObj.prototype.init = function () {
         this.amp[i] = Math.random() * 50 + 50;
 
     }
+    loadDate += 1;
 };
 
 AneObj.prototype.draw = function () {

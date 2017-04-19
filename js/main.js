@@ -1,15 +1,17 @@
 var can1, can2, ctx1, ctx2, lastTime, deltaTime, bgImg = new Image(),
-    cW, cH, ane, fruit, mom, mX, mY, baby, data, wave, halo, dust;
+    cW, cH, ane, fruit, mom, mX, mY, baby, data, wave, halo, dust, loadDate = 0;
 
 document.body.onload = game;
 
 function game() {
     init();
-    // 上一帧的时间
+
     lastTime = Date.now();
 
-    // 这一帧的时间
+
     deltaTime = 0;
+    if (loadDate < 7) return;
+
     gameLoop();
 }
 
