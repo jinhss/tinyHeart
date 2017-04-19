@@ -1,10 +1,35 @@
 var can1, can2, ctx1, ctx2, lastTime, deltaTime, bgImg = new Image(),
-    cW, cH, ane, fruit, mom, mX, mY, baby, data, wave, halo, dust, clientH, clientW;
+    cW, cH, ane, fruit, mom, mX, mY, baby, data, wave, halo, dust, clientH, clientW, screenOrientation;
 
 clientH = document.documentElement.clientHeight || document.body.clientHeight;
 clientW = document.documentElement.clientWidth || document.body.clientWidth
 
+
+function checkOrient() {
+
+    if (window.orientation == 0 || window.orientation == 180) {
+        screenOrientation = 'portrait';// 竖屏
+    }
+    else if (window.orientation == 90 || window.orientation == -90) {
+        screenOrientation = 'landscape';// 横屏
+    }
+    return screenOrientation;
+}
+// 添加事件监听
+addEventListener('load', function () {
+    checkOrient();
+    window.onorientationchange = function () {
+        checkOrient();
+        if (screenOrientation == 'portrait') {
+            document.body.style.transform = 'rotate(90deg)';
+        } else {
+            document.body.style.transform = 'rotate(0)';
+        }
+    };
+});
+
 document.onreadystatechange = loadingChange;//当页面加载状态改变的时候执行这个方法.
+
 function loadingChange() {
     if (document.readyState == "complete") { //当页面加载状态为完全结束时进入
         game();
