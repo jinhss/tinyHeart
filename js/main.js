@@ -32,7 +32,6 @@ function init() {
     can2 = document.getElementById('canvas2'); // background,ane,fruits
     ctx2 = can2.getContext('2d');
     can1.addEventListener('mousemove', onMousemove, false);
-
     can1.addEventListener('click', restartGame, false);
     ctx1.fillStyle = '#fff';
     ctx1.font = "20px Verdana"
@@ -127,6 +126,7 @@ function restartGame() {
     if (!data.gameOver) return;
     data.gameOver = false;
     baby.babyBodyCount = 0;
+    mom.momBodyCount = 0;
     data.fruitNum = 0;
     data.score = 0;
 };
