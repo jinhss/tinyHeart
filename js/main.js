@@ -32,7 +32,9 @@ function init() {
     can2 = document.getElementById('canvas2'); // background,ane,fruits
     ctx2 = can2.getContext('2d');
     can1.addEventListener('mousemove', onMousemove, false);
+    can1.addEventListener('touchmove', onTouchmove, false);
     can1.addEventListener('click', restartGame, false);
+    can1.addEventListener('touchend', onTouchend, false);
     ctx1.fillStyle = '#fff';
     ctx1.font = "20px Verdana"
 
@@ -122,6 +124,17 @@ function onMousemove(e) {
 
 }
 
+function onTouchmove(e) {
+    if (data.gameOver) return;
+    var e = e || event;
+    e.preventDefault();
+    if (e.targetTouches.length == 1) {
+        var touch = event.targetTouches[0];
+        mX = touch.pageX;
+        mY = touch.pageY;
+    }
+}
+
 function restartGame() {
     if (!data.gameOver) return;
     data.gameOver = false;
@@ -129,4 +142,16 @@ function restartGame() {
     mom.momBodyCount = 0;
     data.fruitNum = 0;
     data.score = 0;
-};
+}
+
+function onTouchend(e) {
+    if (!data.gameOver) return;
+    var e = e || event;
+    data.gameOver = false;
+    baby.babyBodyCount = 0;
+    mom.momBodyCount = 0;
+    data.fruitNum = 0;
+    data.score = 0;
+
+    e.preventDefault();
+}
