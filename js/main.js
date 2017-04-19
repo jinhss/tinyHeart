@@ -1,32 +1,21 @@
 var can1, can2, ctx1, ctx2, lastTime, deltaTime, bgImg = new Image(),
-    cW, cH, ane, fruit, mom, mX, mY, baby, data, wave, halo, dust, clientH, clientW, screenOrientation;
+    cW, cH, ane, fruit, mom, mX, mY, baby, data, wave, halo, dust, clientH, clientW;
 
 clientH = document.documentElement.clientHeight || document.body.clientHeight;
-clientW = document.documentElement.clientWidth || document.body.clientWidth
+clientW = document.documentElement.clientWidth || document.body.clientWidth;
 
-
-function checkOrient() {
-
-    if (window.orientation == 0 || window.orientation == 180) {
-        screenOrientation = 'portrait';// 竖屏
+// 判断手机横竖屏状态：
+function hengshuping() {
+    if (window.orientation == 180 || window.orientation == 0) {
+        document.body.style.transform = 'rotate(90deg)';
     }
-    else if (window.orientation == 90 || window.orientation == -90) {
-        screenOrientation = 'landscape';// 横屏
+    if (window.orientation == 90 || window.orientation == -90) {
+        document.body.style.transform = 'rotate(0)';
     }
 }
 
-// 添加事件监听
-addEventListener('load', function () {
-    checkOrient();
-    window.onorientationchange = function () {
-        checkOrient();
-        if (screenOrientation == 'portrait') {
-            document.body.style.transform = 'rotate(90deg)';
-        } else {
-            document.body.style.transform = 'rotate(0)';
-        }
-    };
-});
+// 绑定事件
+window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", hengshuping, false);
 
 document.onreadystatechange = loadingChange;//当页面加载状态改变的时候执行这个方法.
 

@@ -27,3 +27,13 @@ canvas {
 #canvas2 {
     z-index: 0;
 }
+
+@media all and (orientation : landscape) {
+
+    h2{color:red;}/*横屏时字体红色*/
+
+}
+
+@media all and (orientation : portrait){
+
+}
