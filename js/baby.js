@@ -1,4 +1,4 @@
-var BabyObj = function() {
+var BabyObj = function () {
     this.disX, this.disY, this.angle;
 
     this.babyTails = [];
@@ -13,9 +13,10 @@ var BabyObj = function() {
     this.babyBody = [];
     this.babyBodyTimer = 0;
     this.babyBodyCount = 0;
+
 };
 
-BabyObj.prototype.init = function() {
+BabyObj.prototype.init = function () {
     // 鱼宝宝初始位置
     this.disX = cW * 0.5 - 50, this.disY = cW * 0.5 + 50;
 
@@ -38,7 +39,7 @@ BabyObj.prototype.init = function() {
     }
 };
 
-BabyObj.prototype.draw = function() {
+BabyObj.prototype.draw = function () {
 
     // 鱼宝宝趋向鼠标位置 (运动速度)
     this.disX = lerpDistance(mom.disX - 35, this.disX, 0.98);
@@ -75,10 +76,12 @@ BabyObj.prototype.draw = function() {
         }
     }
 
+    // 鱼宝宝身体
     this.babyBodyTimer += deltaTime;
     if (this.babyBodyTimer > 300) {
         this.babyBodyCount = this.babyBodyCount + 1;
         this.babyBodyTimer %= 300;
+
         if (this.babyBodyCount > 19) {
             this.babyBodyCount = 19;
             // game over

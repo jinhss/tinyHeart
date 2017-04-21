@@ -38,6 +38,7 @@ function game() {
 }
 
 function init() {
+
     bgImg.src = './images/background.jpg';
 
     // 找到画布并获得画笔
@@ -93,6 +94,7 @@ function init() {
 }
 
 function gameLoop() {
+
     // fram per second => FPS
     requestAnimFrame(gameLoop);
 
@@ -116,6 +118,30 @@ function gameLoop() {
 
     ctx1.clearRect(0, 0, cW, cH);
 
+    // 绘制fps
+    ctx1.save();
+    ctx1.font = "10px Verdana"
+    ctx1.shadowBlur = 10;
+    ctx1.shadowColor = "#fff";
+    ctx1.textAlign = "right";
+    ctx1.fillStyle = "rgba(255,255,255," + this.alpha + ")";
+    ctx1.fillText("fps " + deltaTime, cW - 6, 16);
+    ctx1.restore();
+
+    // 鱼宝宝状态提醒
+    if (baby.babyBodyCount > 14) {
+        var alpha = 1 / 25;
+        var lineW = 25;
+        ctx1.save();
+        ctx1.lineWidth = 1;
+        for (var i = lineW; i > 0; i--) {
+            ctx1.strokeStyle = "rgba(255,0,0," + alpha + ")";
+            ctx1.strokeRect(i, i, cW - i * 2, cH - i * 2);
+            alpha += 1 / lineW;
+        }
+        ctx1.restore();
+    }
+
     // 绘制鱼妈妈
     mom.draw();
 
@@ -125,15 +151,21 @@ function gameLoop() {
     // 鱼妈妈与鱼宝宝碰撞检测
     momBabyCollision();
 
+    // 绘制鱼宝宝
     baby.draw();
 
+    // 游戏数据
     data.draw();
 
+    // 绘制鱼妈妈碰撞果实涟漪
     wave.draw();
 
+    // 绘制鱼妈妈碰撞鱼宝宝涟漪
     halo.draw();
 
+    // 绘制漂浮物
     dust.draw();
+
 }
 
 function onMousemove(e) {
