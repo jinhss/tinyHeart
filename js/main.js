@@ -14,9 +14,11 @@ function hengshuping() {
     }
 }
 
-ready(function(){
-    game();
-});
+// ready(function(){
+//     game();
+// });
+
+window.onload = game;
 
 function game() {
     init();
