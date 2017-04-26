@@ -14,17 +14,9 @@ function hengshuping() {
     }
 }
 
-// 绑定事件
-window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", hengshuping, false);
-
-document.onreadystatechange = loadingChange;//当页面加载状态改变的时候执行这个方法.
-
-function loadingChange() {
-    if (document.readyState == "complete") { //当页面加载状态为完全结束时进入
-        game();
-    }
-}
-
+ready(function(){
+    game();
+});
 
 function game() {
     init();
